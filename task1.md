@@ -13,7 +13,8 @@ Create a file sum1ton.c .Write a c program and save it
 Compile the c program and verify the results using the following commands
 `gcc sum1ton.c`
 `./a.out`
-![Imagex2](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/9e116944-62ea-45e7-b75c-8db0f54e2841)
+![image](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/835864ee-a9bb-4c77-81f7-f045e8bf7de2)
+
 
 ### RISC V
 To get the RISC V instruction type from C program,
