@@ -5,21 +5,21 @@ During this internship, we will delve into the RISC-V architecture and explore t
 
 
 ### C code to RISC-V instruction set
-Write a c program to count the sum from 1 to n. To do so install leafpad by using the command.
+Write a c program to count the sum from 1 to n. To do so install leafpad by using the command  
 `leafpad sum1ton.c &` 
 Create a file sum1ton.c .Write a c program and save it.
 ![image](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/92ba6c1a-5da1-4bf4-9fd4-5cbf26e16b63)
 
-Compile the c program and verify the results using the following commands
-`gcc sum1ton.c`.
-`./a.out`.
+Compile the c program and verify the results using the following commands  
+`gcc sum1ton.c`  
+`./a.out`  
 ![image](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/835864ee-a9bb-4c77-81f7-f045e8bf7de2)
 
 
 ### RISC V
-To get the RISC V instruction type from C program.
+To get the RISC V instruction type from C program  
 `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c`
-To view the output we use the command.
+To view the output we use the command  
 `riscv64-unknown-elf-objdump -d sum2n.o | less`
 ![Screenshot (186)](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/ddf069c9-8df3-4407-adda-982df3f4d0c8)
 
