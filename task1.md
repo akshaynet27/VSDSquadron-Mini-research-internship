@@ -15,7 +15,7 @@ Compile the c program and verify the results using the following commands
 `./a.out`
 ![Imagex2](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/9e116944-62ea-45e7-b75c-8db0f54e2841)
 
-###RISC V
+### RISC V
 To get the RISC V instruction type from C program,
 `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c`
 To view the output we use the command
