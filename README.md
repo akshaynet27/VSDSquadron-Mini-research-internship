@@ -35,7 +35,7 @@ We can notice that for `-Ofast` the instruction is reduced to 12 lines rather th
 The c program for Clock cycle divider is as follows  
 ![Screenshot (193)](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/d90c081f-359b-414b-acbc-a516516a0e3d)
 
-###Output  
+### Output  
 ![Screenshot (192)](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/7495cff9-3037-4ced-a153-1562a6c09871)
 
 To get the RISC V instruction type from C program  
