@@ -1,4 +1,4 @@
-![Screenshot (200)](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/60b4ceb4-a71d-4d81-a649-1832f68d13a0)# VSDsquadron-mini-internship
+# VSDsquadron-mini-internship
 The vsdsquadron mini is a development board based on the RISC-V architecture, featuring a 32-bit RISC-V core. It is equipped with 16KB of flash memory and 2KB of SRAM which runs at a clock speed of 24 MHz. The board includes 15 GPIO pins and supports communication protocols such as I2C, SPI, and USART.
 
 During this internship, we will delve into the RISC-V architecture and explore the capabilities of the vsdsquadron mini microprocessor. Additionally, we will work on a project utilizing the vsdsquadron mini.
