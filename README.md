@@ -3,8 +3,7 @@ The vsdsquadron mini is a development board based on the RISC-V architecture, fe
 
 During this internship, we will delve into the RISC-V architecture and explore the capabilities of the vsdsquadron mini microprocessor. Additionally, we will work on a project utilizing the vsdsquadron mini.  
 
-<details>
-<summary> Task1 C code to RISC-V instruction set </summary>
+## Task 1: C code to RISC-V instruction set
 Write a c program to count the sum from 1 to n. To do so install leafpad by using the command  
 `leafpad sum1ton.c &`   
 Create a file sum1ton.c then write a c program and save it.  
@@ -28,7 +27,7 @@ This opens the output in the less editor, facilitating easier navigation. To loc
 Now we can use `-Ofast` instead of `-O1` and notice the difference between them.  
 `riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c`  
 ![Screenshot (187)](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/97d6c1f8-a395-4f59-9ab6-c0ebf6308b5e)
-We can notice that for `-Ofast` the instruction is reduced to 12 lines rather than 15 lines  </details>
+We can notice that for `-Ofast` the instruction is reduced to 12 lines rather than 15 lines  
 
 ## Task 2: Write a simple c program for the clock cycle divider and compile it RISC V GCC  
 
