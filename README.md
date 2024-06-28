@@ -3,8 +3,7 @@ The vsdsquadron mini is a development board based on the RISC-V architecture, fe
 
 During this internship, we will delve into the RISC-V architecture and explore the capabilities of the vsdsquadron mini microprocessor. Additionally, we will work on a project utilizing the vsdsquadron mini.
 <details>
-## <summary>Task 1</summary>
-### C code to RISC-V instruction set
+## <summary>Task C code to RISC-V instruction set</summary>
 Write a c program to count the sum from 1 to n. To do so install leafpad by using the command  
 `leafpad sum1ton.c &`   
 Create a file sum1ton.c then write a c program and save it.
