@@ -1,13 +1,14 @@
 # VSDsquadron-mini-internship
 The vsdsquadron mini is a development board based on the RISC-V architecture, featuring a 32-bit RISC-V core. It is equipped with 16KB of flash memory and 2KB of SRAM which runs at a clock speed of 24 MHz. The board includes 15 GPIO pins and supports communication protocols such as I2C, SPI, and USART.
 
-During this internship, we will delve into the RISC-V architecture and explore the capabilities of the vsdsquadron mini microprocessor. Additionally, we will work on a project utilizing the vsdsquadron mini.
+During this internship, we will delve into the RISC-V architecture and explore the capabilities of the vsdsquadron mini microprocessor. Additionally, we will work on a project utilizing the vsdsquadron mini.  
+
+<summary> Task1 C code to RISC-V instruction set </summary>
 <details>
-## <summary>Task C code to RISC-V instruction set</summary>
 Write a c program to count the sum from 1 to n. To do so install leafpad by using the command  
 `leafpad sum1ton.c &`   
-Create a file sum1ton.c then write a c program and save it.
-![image](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/92ba6c1a-5da1-4bf4-9fd4-5cbf26e16b63)
+Create a file sum1ton.c then write a c program and save it.  
+![Screenshot (184)](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/d776d243-febb-4807-a8a3-dee49d9ed1d1)
 
 Compile the c program and verify the results using the following commands  
 `gcc sum1ton.c`  
