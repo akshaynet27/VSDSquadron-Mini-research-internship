@@ -75,3 +75,124 @@ During this internship, we will delve into the RISC-V architecture and explore t
   To know the status of the register we can use `reg 0 register_name` for example `reg 0 a0` shows us what is present in the a0 register
 
 </details>
+
+<details>
+  <summary><b>Task 4:</b>To identify the instruction type of all the given instructions with its exact 32 bits of instruction code in the desired instruction type format</summary>
+
+## Introduction
+This report provides a detailed analysis of various RISC-V instructions. Each instruction is classified into its respective type (R, I, S, B) and its exact 32-bit binary encoding is provided.
+### Instruction Formats in RISC-V
+
+The instruction format of a processor defines how machine language instructions are structured and organized for execution. These instructions consist of bits (0s and 1s), each carrying information about data locations and operations. RISC-V has six instruction formats:
+
+1. **R-format**
+2. **I-format**
+3. **S-format**
+4. **B-format**
+5. **U-format**
+6. **J-format**
+
+Let's delve into each instruction format with examples.
+
+#### 1. R-type Instruction
+In RV32, each instruction is 32 bits long. The "R" in R-type stands for "register," indicating that these instructions operate on registers, not memory locations. R-type instructions perform various arithmetic and logical operations. The 32-bit instruction is divided into six fields:
+
+- **Opcode (7 bits):** Identifies the type of instruction format.
+- **rd (5 bits):** Destination Register, stores the result of the operation.
+- **func3 (3 bits):** Specifies the type of arithmetic or logical operation.
+- **rs1 (5 bits):** Source Register 1, holds data for the operation.
+- **rs2 (5 bits):** Source Register 2, holds additional data for the operation.
+- **func7 (7 bits):** Further specifies the operation.
+
+#### 2. I-type Instruction
+In RV32, each instruction is 32 bits long. The "I" in I-type stands for "immediate," meaning these instructions use registers and an immediate value. I-type instructions are used for immediate and load operations. The 32-bit instruction is divided into five fields:
+
+- **Opcode (7 bits):** Identifies the type of instruction format.
+- **rd (5 bits):** Destination Register, stores the result of the operation.
+- **func3 (3 bits):** Specifies the type of arithmetic or logical operation.
+- **rs1 (5 bits):** Source Register, holds data for the operation.
+- **Immediate (12 bits):** Signed immediate value, replacing the rs2 and func7 fields from R-type.
+
+#### 3. S-type Instruction
+In RV32, each instruction is 32 bits long. The "S" in S-type stands for "store," indicating these instructions store register values into memory. S-type instructions are used for store operations. The 32-bit instruction is divided into six fields:
+
+- **Opcode (7 bits):** Identifies the type of instruction format.
+- **Immediate (12 bits):** Signed immediate value, split into imm[11:5] and imm[4:0].
+- **rs1 (5 bits):** Source Register 1, holds the value to be stored.
+- **rs2 (5 bits):** Source Register 2, used in address calculation.
+- **func3 (3 bits):** Specifies the width and type of the store operation.
+
+#### 4. B-type Instruction
+In RV32, each instruction is 32 bits long. The "B" in B-type stands for "branch," indicating these instructions are used for conditional branching. The 32-bit instruction is divided into eight fields:
+
+- **Opcode (7 bits):** Identifies the type of instruction format.
+- **Immediate (12 bits):** Signed immediate value, split across imm[12], imm[10:5], imm[4:1], and imm[11].
+- **rs1 (5 bits):** Source Register 1, involved in the condition check.
+- **rs2 (5 bits):** Source Register 2, involved in the condition check.
+- **func3 (3 bits):** Specifies the branch condition.
+
+If the condition is true, the Program Counter (PC) is updated by adding the immediate value. If false, the PC moves to the next instruction (PC + 4 bytes). Instructions are word-aligned (address in multiples of 4 bytes).
+
+#### 5. U-type Instruction
+In RV32, each instruction is 32 bits long. The "U" in U-type stands for "upper immediate," meaning these instructions transfer immediate data to the destination register. The 32-bit instruction is divided into three fields:
+
+- **Opcode (7 bits):** Identifies the type of instruction format.
+- **rd (5 bits):** Destination Register.
+- **Immediate (20 bits):** Upper immediate value, used in LUI and AUIPC instructions.
+
+For example, the instruction `lui x15, 0x13579` writes the immediate value 0x13579 to the upper 20 bits of the rd register (x15), resulting in `x15 = 0x13579000`.
+
+#### 6. J-type Instruction
+In RV32, each instruction is 32 bits long. The "J" in J-type stands for "jump," indicating these instructions implement jump operations. The 32-bit instruction is divided into six fields:
+
+- **Opcode (7 bits):** Identifies the type of instruction format.
+- **rd (5 bits):** Destination Register.
+- **Immediate (20 bits):** Signed immediate value, divided into four fields.
+
+J-type instructions, such as JAL, are used to jump to a specified memory location, often for implementing loops.
+
+This overview provides a detailed look at the six instruction formats in RISC-V, highlighting their structure and use cases.
+
+
+## Instruction Formats
+- **R-Type**: Used for register-register operations.
+- **I-Type**: Used for immediate values and load instructions.
+- **S-Type**: Used for store instructions.
+- **B-Type**: Used for branch instructions.
+
+## Detailed Instruction Analysis
+
+### R-Type Instructions
+| Instruction | Opcode | Funct3 | Funct7 | Binary Encoding |
+|-------------|--------|--------|--------|-----------------|
+| ADD r1, r2, r3 | 0110011 | 000 | 0000000 | 0000000 00011 00010 000 00001 0110011 |
+| SUB r3, r1, r2 | 0110011 | 000 | 0100000 | 0100000 00010 00001 000 00011 0110011 |
+| AND r2, r1, r3 | 0110011 | 111 | 0000000 | 0000000 00011 00001 111 00010 0110011 |
+| OR r8, r2, r5 | 0110011 | 110 | 0000000 | 0000000 00101 00010 110 01000 0110011 |
+| XOR r8, r1, r4 | 0110011 | 100 | 0000000 | 0000000 00100 00001 100 01000 0110011 |
+| SLT r10, r2, r4 | 0110011 | 010 | 0000000 | 0000000 00100 00010 010 01010 0110011 |
+| SRL r16, r11, r2 | 0110011 | 101 | 0000000 | 0000000 00010 01011 101 10000 0110011 |
+| SLL r15, r11, r2 | 0110011 | 001 | 0000000 | 0000000 00010 01011 001 01111 0110011 |
+
+### I-Type Instructions
+| Instruction | Opcode | Funct3 | Immediate | Binary Encoding |
+|-------------|--------|--------|-----------|-----------------|
+| ADDI r12, r3, 5 | 0010011 | 000 | 000000000101 | 000000000101 00011 000 01100 0010011 |
+| LW r13, r11, 2 | 0000011 | 010 | 000000000010 | 000000000010 01011 010 01101 0000011 |
+
+### S-Type Instructions
+| Instruction | Opcode | Funct3 | Immediate | Binary Encoding |
+|-------------|--------|--------|-----------|-----------------|
+| SW r3, r1, 4 | 0100011 | 010 | 000000000100 | 0000000 00011 00001 010 00010 0100011 |
+
+### B-Type Instructions
+| Instruction | Opcode | Funct3 | Immediate | Binary Encoding |
+|-------------|--------|--------|-----------|-----------------|
+| BNE r0, r1, 20 | 1100011 | 001 | 000000001010 | 0000000 00001 00000 001 00101 1100011 |
+| BEQ r0, r0, 15 | 1100011 | 000 | 000000000111 | 0000000 00000 00000 000 00111 1100011 |
+
+## Summary
+This  provides a clear analysis of the given RISC-V instructions. Each instruction is categorized by type and detailed with its binary encoding.
+
+
+  
