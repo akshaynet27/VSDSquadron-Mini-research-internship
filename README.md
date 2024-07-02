@@ -151,9 +151,6 @@ In RV32, each instruction is 32 bits long. The "J" in J-type stands for "jump," 
 
 J-type instructions, such as JAL, are used to jump to a specified memory location, often for implementing loops.
 
-This overview provides a detailed look at the six instruction formats in RISC-V, highlighting their structure and use cases.
-
-
 ## Instruction Formats
 - **R-Type**: Used for register-register operations.
 - **I-Type**: Used for immediate values and load instructions.
