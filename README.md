@@ -284,14 +284,58 @@ The Mini Weather Station is a simple and cost-effective project that integrates 
 - **Power Supply**
   - To power the entire circuit, such as a USB cable or battery pack.
 
-## Circuit Diagram
+### Pinout Diagram
 
-(To be added)
+![WhatsApp Image 2024-07-09 at 2 43 17 PM](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/6300935e-3079-4afc-b4b1-23ea6695035a)
+
+
+### Circuit Connections
+
+#### DHT11 Sensor
+
+| Pin  | Connection                     |
+|------|--------------------------------|
+| VCC  | 3.3V or 5V                     |
+| GND  | GND                            |
+| DATA | Connect to any available GPIO pin (PC0) |
+
+#### BMP180 Sensor (I2C)
+
+| Pin  | Connection                     |
+|------|--------------------------------|
+| VIN  | 3.3V                           |
+| GND  | GND                            |
+| SCL  | Connect to I2C clock pin (PA1) |
+| SDA  | Connect to I2C data pin (PA2) |
+
+#### 16x2 LCD Screen (I2C Interface)
+
+| Pin  | Connection                     |
+|------|--------------------------------|
+| VCC  | 3.3V                           |
+| GND  | GND                            |
+| SCL  | Connect to I2C clock pin (e.g., PA1) |
+| SDA  | Connect to I2C data pin (e.g., PA2) |
+
+#### 16x2 LCD Screen (Parallel Interface)
+
+| Pin  | Connection                      |
+|------|---------------------------------|
+| VSS  | GND                             |
+| VDD  | 5V                              |
+| V0   | Middle pin of 10kΩ potentiometer (other two ends connected to VCC and GND) |
+| RS   | Any GPIO pin (PD1)        |
+| RW   | GND                             |
+| E    | Any GPIO pin (PD2)        |
+| D4-D7| Any GPIO pins (PD3-PD6)   |
+| A, K | (For backlight) A to 5V, K to GND |
+
+
 
 ## Code
 
 (To be added)
 
 
-
+</details>
   
