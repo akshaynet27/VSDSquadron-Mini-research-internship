@@ -249,5 +249,49 @@ sudo apt install iverilog gtkwave
 
 </details>
   
+<details>
+  <summary><b>Task 6: </b>Overview of the project using VSDSquadron mini</summary>
+  
+## Mini Weather Station
+
+### Overview
+
+The Mini Weather Station is a simple and cost-effective project that integrates sensors to measure temperature, humidity, and atmospheric pressure. The data collected from the sensors is displayed on a 16x2 LCD screen. This project is ideal for beginners in electronics and programming, providing hands-on experience with sensor interfacing and data visualization.
+
+### Components Required
+
+- **CH32V003F4U6 Board**
+  - The microcontroller board that will serve as the brain of the weather station.
+
+- **DHT11 Sensor**
+  - Used for measuring temperature and humidity.
+
+- **BMP180 Sensor**
+  - Used for measuring atmospheric pressure.
+
+- **16x2 LCD Screen**
+  - Display module for showing the collected data. Can be either I2C or parallel interface.
+
+- **Breadboard**
+  - For assembling the circuit without soldering.
+
+- **Jumper Wires**
+  - For making electrical connections between components.
+
+- **10kΩ Potentiometer**
+  - Used for adjusting the contrast of the LCD if using a parallel interface.
+
+- **Power Supply**
+  - To power the entire circuit, such as a USB cable or battery pack.
+
+## Circuit Diagram
+
+(To be added)
+
+## Code
+
+(To be added)
+
+
 
   
