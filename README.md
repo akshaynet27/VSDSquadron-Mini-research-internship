@@ -256,21 +256,15 @@ sudo apt install iverilog gtkwave
 
 ### Overview
 
-The Mini Weather Station is a simple and cost-effective project that integrates sensors to measure temperature, humidity, and atmospheric pressure. The data collected from the sensors is displayed on a 16x2 LCD screen. This project is ideal for beginners in electronics and programming, providing hands-on experience with sensor interfacing and data visualization.
+The 4:1 Multiplexer project demonstrates the functionality of a digital multiplexer, which selects one of four input signals and forwards the selected input to a single output line. This project utilizes the vsdsquadron RISC-V board, leveraging its GPIO pins for interfacing and control. Ideal for beginners in digital electronics and embedded systems, this project provides hands-on experience with digital logic design, signal routing, and the practical application of multiplexers.
 
 ### Components Required
 
 - **CH32V003F4U6 Board**
-  - The microcontroller board that will serve as the brain of the weather station.
+  - The microcontroller board will serve as the brain of the Multiplexer.
 
-- **DHT11 Sensor**
-  - Used for measuring temperature and humidity.
-
-- **BMP180 Sensor**
-  - Used for measuring atmospheric pressure.
-
-- **16x2 LCD Screen**
-  - Display module for showing the collected data. Can be either I2C or parallel interface.
+- **Push Buttons**
+  - For Select line inputs.
 
 - **Breadboard**
   - For assembling the circuit without soldering.
@@ -278,64 +272,100 @@ The Mini Weather Station is a simple and cost-effective project that integrates 
 - **Jumper Wires**
   - For making electrical connections between components.
 
-- **10kΩ Potentiometer**
-  - Used for adjusting the contrast of the LCD if using a parallel interface.
+- **LED**
+  - To depict the output.
 
-- **Power Supply**
-  - To power the entire circuit, such as a USB cable or battery pack.
 
 ### Pinout Diagram
 
-![WhatsApp Image 2024-07-09 at 2 43 17 PM](https://github.com/akshaynet27/VSDSquadron-Mini-research-internship/assets/173434697/6300935e-3079-4afc-b4b1-23ea6695035a)
+![WhatsApp Image 2024-07-16 at 9 13 46 PM](https://github.com/user-attachments/assets/5640034a-16c5-4851-9791-63642081c395)
 
 
-### Circuit Connections
 
-#### DHT11 Sensor
 
-| Pin  | Connection                     |
-|------|--------------------------------|
-| VCC  | 3.3V or 5V                     |
-| GND  | GND                            |
-| DATA | Connect to any available GPIO pin (PC0) |
+### Pin Connections
 
-#### BMP180 Sensor (I2C)
+| Component     | VSDsquadron Mini Board | Breadboard            |
+|---------------|-------------------------|-----------------------|
+| Push Button 1 | PD2                     | Connect one side to PD2, other side to GND |
+| Push Button 2 | PD3                     | Connect one side to PD3, other side to GND |
+| LED 1         | PD4                     | Connect anode to PD4, cathode to GND via resistor |
+| LED 2         | PD5                     | Connect anode to PD5, cathode to GND via resistor |
+| LED 3         | PD6                     | Connect anode to PD6, cathode to GND via resistor |
+| LED 4         | PD7                     | Connect anode to PD7, cathode to GND via resistor |
+| GND           | GND                     | Common GND rail on the breadboard |
+| 5V            | 5V                      | Power rail on the breadboard |
 
-| Pin  | Connection                     |
-|------|--------------------------------|
-| VIN  | 3.3V                           |
-| GND  | GND                            |
-| SCL  | Connect to I2C clock pin (PA1) |
-| SDA  | Connect to I2C data pin (PA2) |
+### Summary
+- **Push Buttons**: Each push button is connected to a GPIO pin (PD2 and PD3) on the VSDsquadron Mini Board and to GND.
+- **LEDs**: Each LED is connected to a GPIO pin (PD4, PD5, PD6, PD7) on the VSDsquadron Mini Board with their cathodes connected to GND through a current-limiting resistor.
+- **Power and GND**: The 5V and GND from the VSDsquadron Mini Board are connected to the power and GND rails of the breadboard.
 
-#### 16x2 LCD Screen (I2C Interface)
-
-| Pin  | Connection                     |
-|------|--------------------------------|
-| VCC  | 3.3V                           |
-| GND  | GND                            |
-| SCL  | Connect to I2C clock pin (e.g., PA1) |
-| SDA  | Connect to I2C data pin (e.g., PA2) |
-
-#### 16x2 LCD Screen (Parallel Interface)
-
-| Pin  | Connection                      |
-|------|---------------------------------|
-| VSS  | GND                             |
-| VDD  | 5V                              |
-| V0   | Middle pin of 10kΩ potentiometer (other two ends connected to VCC and GND) |
-| RS   | Any GPIO pin (PD1)        |
-| RW   | GND                             |
-| E    | Any GPIO pin (PD2)        |
-| D4-D7| Any GPIO pins (PD3-PD6)   |
-| A, K | (For backlight) A to 5V, K to GND |
 
 
 
 ## Code
+#include "ch32v00x.h"
 
-(To be added)
+// Function to initialize GPIO pins
+void GPIO_Init(void) {
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+    
+    GPIO_InitTypeDef GPIO_InitStructure;
+    
+    // Configure IN0, IN1, IN2, IN3 as input
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_Init(GPIOA, &GPIO_InitStructure);
+    
+    // Configure S0, S1 as input
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+    
+    // Configure OUT as output
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_Init(GPIOB, &GPIO_InitStructure);
+}
 
+// Function to read the selected input and set the output
+void Multiplexer(void) {
+    uint8_t S0, S1;
+    uint16_t output;
+    
+    // Read selection lines
+    S0 = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0);
+    S1 = GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_1);
+    
+    // Determine the output based on the selection lines
+    if (S0 == 0 && S1 == 0) {
+        output = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
+    } else if (S0 == 0 && S1 == 1) {
+        output = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1);
+    } else if (S0 == 1 && S1 == 0) {
+        output = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_2);
+    } else {
+        output = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_3);
+    }
+    
+    // Set the output
+    GPIO_WriteBit(GPIOB, GPIO_Pin_2, output);
+}
+
+int main(void) {
+    SystemInit();
+    GPIO_Init();
+    
+    while (1) {
+        Multiplexer();
+    }
+}
+
+## Video
+
+[Watch the video on Google Drive](https://drive.google.com/file/d/1yfmgiXkAETqOZgNFUV6puuEMjlRJwwRn/view?usp=sharing)
 
 </details>
   
