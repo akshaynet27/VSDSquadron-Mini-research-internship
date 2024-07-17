@@ -305,6 +305,7 @@ The 4:1 Multiplexer project demonstrates the functionality of a digital multiple
 
 
 ## Code
+```
 #include "ch32v00x.h"
 
 // Function to initialize GPIO pins
@@ -362,6 +363,7 @@ int main(void) {
         Multiplexer();
     }
 }
+```
 
 ## Video
 
