@@ -252,7 +252,7 @@ sudo apt install iverilog gtkwave
 <details>
   <summary><b>Task 6: </b>Overview of the project using VSDSquadron mini</summary>
   
-## Mini Weather Station
+## 4:1 Multiplexer
 
 ### Overview
 
