@@ -367,7 +367,7 @@ int main(void) {
 
 ## Video
 
-[Watch the video on Google Drive](https://drive.google.com/file/d/1yfmgiXkAETqOZgNFUV6puuEMjlRJwwRn/view?usp=sharing)
+[Watch the video on Google Drive](https://drive.google.com/file/d/1YZuB6Dhf_0ky-jEsqVd0dD6VqEd3DYa5/view?usp=drive_link)
 
 </details>
   
